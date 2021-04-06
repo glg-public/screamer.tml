@@ -1,5 +1,5 @@
 {
-  "name": "Template Screamer",
+  "name": "template-screamer",
   "version": "1.0.0",
   "description": "This is a github action for validating PRs",
   "main": "module.js",
