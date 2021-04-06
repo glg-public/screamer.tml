@@ -7,7 +7,7 @@ You will need to customize almost everything in this repo. It is not intended to
 
 You can define your inputs in [action.yml](./action.yml), and then incorporate them into your screamer in [index.js:run](./index.js#L15-L21)
 
-You can find a template check at [./checks/templates.js](./checks/templates.js).
+You can find a template check at [./checks/template.js](./checks/template.js).
 
 Your checks get mounted in [./checks/index.js](./checks/index.js).
 
