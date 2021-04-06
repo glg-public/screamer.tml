@@ -41,7 +41,7 @@ async function run() {
     // This should be a list of files you want to scream at
     const filesToCheck = [];
 
-    const unitsToCheck = await getAllRelevantFiles(files, filesToCheck);
+    const dirsTocheck = await getAllRelevantFiles(files, filesToCheck);
 
     // We want to track how all the checks go
     const counts = {
@@ -51,11 +51,11 @@ async function run() {
       notice: 0,
     };
 
-    for (const unit of unitsToCheck) {
+    for (const dir of dirsTocheck) {
       for (const check of checks) {
         let results = [];
         try {
-          results = await check(unit, github.context, inputs, httpGet);
+          results = await check(dir, github.context, inputs, httpGet);
         } catch (e) {
           await suggestBugReport(octokit, e, "Error running check", {
             owner,
