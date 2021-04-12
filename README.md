@@ -94,8 +94,14 @@ detectIndentation(fileLines);
 
 ### escapeRegExp
 
+Escapes a string so that it can be matched literally as a regex.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Escaping
+
 ```javascript
 const { escapeRegExp } = require('./util');
+
+escapeRegExp("test[1-9]+");
+// test\[1\-9\]\+
 ```
 
 ### getAllRelevantFiles

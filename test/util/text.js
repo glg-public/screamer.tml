@@ -7,6 +7,7 @@ const {
   camelCaseFileName,
   codeBlock,
   getLineWithinObject,
+  escapeRegExp,
 } = require("../../util/text");
 
 describe("getLinesForJSON", () => {
@@ -217,5 +218,16 @@ describe("getLineWithinObject", () => {
       regex
     );
     expect(lineNumber).to.equal(3);
+  });
+});
+
+describe("escapeRegExp", () => {
+  it("Escapes a string so that it can be matched literally as a regex", () => {
+    const string = "test[1-9]+";
+    const escaped = escapeRegExp(string);
+    expect(escaped).to.equal("test\\[1\\-9\\]\\+");
+
+    const block = `sometexthere${string}somemoretextouthere`;
+    expect(new RegExp(escaped).test(block)).to.be.true;
   });
 });
