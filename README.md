@@ -129,8 +129,35 @@ const dirsTocheck = await getAllRelevantFiles(files, filesToCheck);
 
 ### getContents
 
+Read relevant files from the directory,
+and split them by `\n`.
+
 ```javascript
 const { getContents } = require('./util');
+
+const directory = await getContents('streamliner', ['orders', 'secrets.json'])
+```
+
+Returns
+
+```javascript
+{
+  directory: 'streamliner',
+  ordersPath: 'streamliner/orders',
+  ordersContents: [
+    'export CAT="pants"',
+    'dockerdeploy github/glg/someapp/main:latest'
+  ],
+  secretsJsonPath: 'streamliner/secrets.json',
+  secretsJsonContents: [
+    '[',
+    '  {',
+    '    "name": "something",',
+    '    "valueFrom": "arn:something:secret"',
+    '  }',
+    ']'
+  ]
+}
 ```
 
 ### getLinesForJSON
