@@ -112,10 +112,10 @@ Takes an array of GitHub Files (as returned by GitHub API), and returns an array
 const { getAllRelevantFiles } = require('./util');
 
 const { data: files } = await octokit.pulls.listFiles({
-      owner,
-      repo,
-      pull_number,
-    });
+  owner,
+  repo,
+  pull_number,
+});
 
 // This should be a list of files you want to scream at
 const filesToCheck = [
