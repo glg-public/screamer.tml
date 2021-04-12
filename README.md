@@ -106,8 +106,25 @@ escapeRegExp("test[1-9]+");
 
 ### getAllRelevantFiles
 
+Takes an array of GitHub Files (as returned by GitHub API), and returns an array of Directory Objects, ready to have checks run on them.
+
 ```javascript
 const { getAllRelevantFiles } = require('./util');
+
+const { data: files } = await octokit.pulls.listFiles({
+      owner,
+      repo,
+      pull_number,
+    });
+
+// This should be a list of files you want to scream at
+const filesToCheck = [
+  'security.json',
+  'readme',
+  'orders'
+];
+
+const dirsTocheck = await getAllRelevantFiles(files, filesToCheck);
 ```
 
 ### getContents

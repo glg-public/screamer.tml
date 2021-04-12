@@ -5,7 +5,8 @@ const { codeBlock } = require("./text");
 const core = require("@actions/core");
 
 /**
- *
+ * Takes an array of GitHub Files (as returned by GitHub API),
+ * and returns an array of Directory Objects, ready to have checks run on them.
  * @param {Array<GitHubFile>} files
  * @param {Array<string>} filesToCheck
  *
