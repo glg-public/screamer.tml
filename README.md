@@ -72,13 +72,13 @@ codeBlock(
 ```
 
 Outputs: 
-```
+
     ```json
     {
       "key": "value"
     }
     ```
-```
+
 
 
 ### detectIndentation
