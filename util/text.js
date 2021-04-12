@@ -1,3 +1,9 @@
+/**
+ * Formats text as a markdown code block.
+ * @param {string} text
+ * @param {string} type
+ * @returns {string}
+ */
 function codeBlock(text, type = "") {
   return `\`\`\`${type}\n${text}\n\`\`\``;
 }

@@ -49,20 +49,47 @@ camelCaseFileName('secrets.json');
 
 ### clearPreviousRunComments
 
+Clear any comments from this bot that are already on the PR.
+This prevents excessive comment polution
+
 ```javascript
 const { clearPreviousRunComments } = require('./util');
+
+await clearPreviousRunComments(octokit, { owner, repo, pull_number });
 ```
 
 ### codeBlock
 
+Formats text as a markdown code block.
+
 ```javascript
 const { codeBlock } = require('./util');
+
+codeBlock(
+  JSON.stringify({ key: "value"}, null, 2), 
+  'json'
+);
 ```
+
+Outputs: 
+```
+    ```json
+    {
+      "key": "value"
+    }
+    ```
+```
+
 
 ### detectIndentation
 
+Determines whether a file uses tabs or spaces, and how many. If a file uses inconsistent indentation, it will return the most common form. This was written for JSON files, but should work with any consistently indented file.
+
 ```javascript
 const { detectIndentation } = require('./util');
+
+detectIndentation(fileLines);
+// { amount: 2, type: 'spaces', indent: '  '}
 ```
 
 ### escapeRegExp
