@@ -38,8 +38,13 @@ Your checks get mounted in [./checks/index.js](./checks/index.js).
 
 ### camelCaseFileName
 
+Takes a filename like secrets.json and returns secretsJson
+
 ```javascript
 const { camelCaseFileName } = require('./util');
+
+camelCaseFileName('secrets.json');
+// secretsJson
 ```
 
 ### clearPreviousRunComments

@@ -172,6 +172,12 @@ describe("camelCaseFilename", () => {
 
     result = camelCaseFileName("policy.json");
     expect(result).to.equal("policyJson");
+
+    result = camelCaseFileName("some-file.json");
+    expect(result).to.equal("someFileJson");
+
+    result = camelCaseFileName("some_odd-file.json");
+    expect(result).to.equal("someOddFileJson");
   });
 });
 

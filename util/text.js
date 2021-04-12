@@ -189,7 +189,7 @@ function detectIndentation(fileLines) {
  * @param {string} filename
  */
 function camelCaseFileName(filename) {
-  const words = filename.split(".");
+  const words = filename.split(/[\.\-_]+/);
 
   let result = words[0];
 
@@ -197,7 +197,7 @@ function camelCaseFileName(filename) {
     result += words
       .slice(1)
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join();
+      .join("");
   }
 
   return result;
