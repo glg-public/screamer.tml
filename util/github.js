@@ -202,6 +202,14 @@ async function suggestBugReport(
   });
 }
 
+/**
+ * Creates a url for a pull request.
+ * @param {Object} options
+ * @param {string} options.owner
+ * @param {string} options.repo
+ * @param {number} options.pull_number
+ * @returns
+ */
 function prLink({ owner, repo, pull_number }) {
   return `https://github.com/${owner}/${repo}/pull/${pull_number}`;
 }

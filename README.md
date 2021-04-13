@@ -367,8 +367,17 @@ link = lineLink({
 
 ### prLink
 
+Creates a url for a pull request.
+
 ```javascript
 const { prLink } = require('./util');
+
+const link = prLink({
+  owner: 'glg-public',
+  repo: 'screamer.tml',
+  pull_number: 1
+});
+// https://github.com/glg-public/screamer.tml/pull/1
 ```
 
 ### suggest
