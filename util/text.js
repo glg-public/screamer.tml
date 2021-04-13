@@ -9,7 +9,7 @@ function codeBlock(text, type = "") {
 }
 
 /**
- *
+ * Wraps some text as a github suggestion comment
  * @param {string} title
  * @param {string} suggestion
  *

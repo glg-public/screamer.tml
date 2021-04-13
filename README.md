@@ -382,9 +382,19 @@ const link = prLink({
 
 ### suggest
 
+Wraps some text as a github suggestion comment
+
 ```javascript
 const { suggest } = require('./util');
+
+const suggestion = suggest('You should do this', 'console.log("hello");')
 ```
+Results in:
+
+    You should do this
+    ```suggestion
+    console.log("hello");
+    ````
 
 ### suggestBugReport
 

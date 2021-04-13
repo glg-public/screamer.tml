@@ -9,6 +9,7 @@ const {
   getLineWithinObject,
   escapeRegExp,
   getLineNumber,
+  suggest,
 } = require("../../util/text");
 
 describe("getLinesForJSON", () => {
@@ -254,5 +255,16 @@ describe("getLineNumber", () => {
     const regex = /dockerdeploy/;
     const line = getLineNumber(ordersContents, regex);
     expect(line).to.be.null;
+  });
+});
+
+describe("suggest", () => {
+  it("wraps some text as a github suggestion", () => {
+    const suggestion = suggest("You should do this", 'console.log("hello");');
+    const expected = `You should do this
+\`\`\`suggestion
+console.log("hello");
+\`\`\``;
+    expect(suggestion).to.equal(expected);
   });
 });
