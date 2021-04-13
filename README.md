@@ -309,7 +309,7 @@ const roles = await httpGet(url, httpOpts);
 
 Leaves the correct type of comment for a given Result object.
 
-- If `Result.line === 0`, it will leave a general comment, and not a line-specific comment.
+- If `Result.line === 0`, it will leave an issue comment, and not a line-specific comment.
 - If `Result.line` is an object like `{start, end}`, it will leave the comment on the selected range of lines, in the file specified by `Result.path`.
 - If `Result.line` is a positive integer, it will leave a comment at that line, in the file specified by `Result.path`.
 - `Result.problems` is an array of strings, and will be converted to a markdown list in the comment
@@ -398,6 +398,15 @@ Results in:
 
 ### suggestBugReport
 
+Submits an issue comment on the PR which contains a link to a pre-populated bug report on this repository.
+
 ```javascript
 const { suggestBugReport } = require('./util');
+
+const error = new Error("Test");
+await suggestBugReport(octokit, error, "Test Error", {
+  owner: "org",
+  repo: "repo",
+  pull_number: 42,
+});
 ```
