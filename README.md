@@ -286,8 +286,23 @@ const { owner, repo, branch } = getOwnerRepoBranch(context);
 
 ### httpGet
 
+Performs an HTTPS GET operation and returns a JSON-parsed body
+
 ```javascript
 const { httpGet } = require('./util');
+
+// No Auth
+let url = 'https://static.glgresearch.com/gds-cluster-map/cluster-map.json';
+const clusterMap = await httpGet(url);
+
+// With Auth
+url = 'https://deploy.glgresearch.com/deployinator/enumerate/roles';
+const httpOpts = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+};
+const roles = await httpGet(url, httpOpts);
 ```
 
 ### leaveComment

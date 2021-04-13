@@ -27,7 +27,12 @@ async function getContents(directory, filesToCheck) {
   return result;
 }
 
-// No need to pull in axios just  for this
+/**
+ * Performs an HTTPS GET operation and returns a JSON-parsed body
+ * @param {string} url
+ * @param {Object | undefined} options
+ * @returns
+ */
 function httpGet(url, options = {}) {
   return new Promise((resolve, reject) => {
     https
