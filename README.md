@@ -246,8 +246,26 @@ const issueLink = getNewIssueLink({
 
 ### getNewFileLink
 
+Creates a url that proposes a new file in github
+
 ```javascript
 const { getNewFileLink } = require('./util');
+
+const link = getNewFileLink({
+  owner: "glg-public",
+  repo: "screamer.tml",
+  branch: "main",
+  filename: "test/fixtures/new-fixture.json",
+  value: JSON.stringify(
+    {
+      key: "value",
+    },
+    null,
+    2
+  ),
+});
+
+// https://github.com/glg-public/screamer.tml/new/main?filename=test%2Ffixtures%2Fnew-fixture.json&value=%7B%0A%20%20%22key%22%3A%20%22value%22%0A%7D
 ```
 
 ### getOwnerRepoBranch

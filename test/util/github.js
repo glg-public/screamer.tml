@@ -4,6 +4,7 @@ const {
   getNewIssueLink,
   codeBlock,
   getOwnerRepoBranch,
+  getNewFileLink,
 } = require("../../util");
 
 describe("suggestBugReport", () => {
@@ -66,5 +67,27 @@ describe("getOwnerRepoBranch", () => {
     expect(owner).to.equal("octocat");
     expect(repo).to.equal("Hello-World");
     expect(branch).to.equal("new-topic");
+  });
+});
+
+describe("getNewFileLink", () => {
+  it("Creates a url that proposes a new file in github", () => {
+    const link = getNewFileLink({
+      owner: "glg-public",
+      repo: "screamer.tml",
+      branch: "main",
+      filename: "test/fixtures/new-fixture.json",
+      value: JSON.stringify(
+        {
+          key: "value",
+        },
+        null,
+        2
+      ),
+    });
+
+    expect(link).to.equal(
+      "https://github.com/glg-public/screamer.tml/new/main?filename=test%2Ffixtures%2Fnew-fixture.json&value=%7B%0A%20%20%22key%22%3A%20%22value%22%0A%7D"
+    );
   });
 });

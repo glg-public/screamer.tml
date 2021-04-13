@@ -227,7 +227,7 @@ function lineLink({ owner, repo, sha, path: filePath, line }) {
 }
 
 /**
- *
+ * Creates a url that proposes a new file in github
  * @param {{
  * owner: string,
  * repo: string,
