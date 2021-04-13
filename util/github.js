@@ -245,7 +245,7 @@ function getNewFileLink({ owner, repo, branch, filename, value }) {
 }
 
 /**
- * Get the owner, repo, and branch for this PR
+ * Get the owner, repo, and head branch for this PR
  * @param {GitHubContext} context The Github Pull Request Context Object
  */
 function getOwnerRepoBranch(context) {

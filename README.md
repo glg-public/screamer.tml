@@ -270,8 +270,18 @@ const link = getNewFileLink({
 
 ### getOwnerRepoBranch
 
+Get the owner, repo, and head branch for this PR
+
 ```javascript
 const { getOwnerRepoBranch } = require('./util');
+const pr = require("./test/fixtures/pull-request.json");
+
+// This context object is something you get for free in the action
+const context = { payload: { pull_request: pr } };
+const { owner, repo, branch } = getOwnerRepoBranch(context);
+// owner: octocat
+// repo: Hello-World
+// branch: new-topic
 ```
 
 ### httpGet
