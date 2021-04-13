@@ -5,6 +5,7 @@ const {
   codeBlock,
   getOwnerRepoBranch,
   getNewFileLink,
+  lineLink,
 } = require("../../util");
 
 describe("suggestBugReport", () => {
@@ -88,6 +89,50 @@ describe("getNewFileLink", () => {
 
     expect(link).to.equal(
       "https://github.com/glg-public/screamer.tml/new/main?filename=test%2Ffixtures%2Fnew-fixture.json&value=%7B%0A%20%20%22key%22%3A%20%22value%22%0A%7D"
+    );
+  });
+});
+
+describe("lineLink", () => {
+  it("creates a url that links to a file in github", () => {
+    const link = lineLink({
+      owner: "glg-public",
+      repo: "screamer.tml",
+      sha: "c0db3ab6a7f43b416ee1810bdd49795540e19b07",
+      path: "test/fixtures/pull-request.json",
+      line: 0,
+    });
+
+    expect(link).to.equal(
+      "https://github.com/glg-public/screamer.tml/blob/c0db3ab6a7f43b416ee1810bdd49795540e19b07/test/fixtures/pull-request.json"
+    );
+  });
+
+  it("creates a url that links to a line in a file in github", () => {
+    const link = lineLink({
+      owner: "glg-public",
+      repo: "screamer.tml",
+      sha: "c0db3ab6a7f43b416ee1810bdd49795540e19b07",
+      path: "test/fixtures/pull-request.json",
+      line: 5,
+    });
+
+    expect(link).to.equal(
+      "https://github.com/glg-public/screamer.tml/blob/c0db3ab6a7f43b416ee1810bdd49795540e19b07/test/fixtures/pull-request.json#L5"
+    );
+  });
+
+  it("creates a url that links to a range of lines in a file in github", () => {
+    const link = lineLink({
+      owner: "glg-public",
+      repo: "screamer.tml",
+      sha: "c0db3ab6a7f43b416ee1810bdd49795540e19b07",
+      path: "test/fixtures/pull-request.json",
+      line: { start: 5, end: 9 },
+    });
+
+    expect(link).to.equal(
+      "https://github.com/glg-public/screamer.tml/blob/c0db3ab6a7f43b416ee1810bdd49795540e19b07/test/fixtures/pull-request.json#L5-L9"
     );
   });
 });

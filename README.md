@@ -327,8 +327,42 @@ await leaveComment(octokit, result, {
 
 ### lineLink
 
+Returns a link to a specific line, or range of lines in a blob
+
 ```javascript
 const { lineLink } = require('./util');
+
+// Whole file
+let link = lineLink({
+  owner: "glg-public",
+  repo: "screamer.tml",
+  sha: "c0db3ab6a7f43b416ee1810bdd49795540e19b07",
+  path: "test/fixtures/pull-request.json",
+  line: 0,
+});
+// https://github.com/glg-public/screamer.tml/blob/c0db3ab6a7f43b416ee1810bdd49795540e19b07/test/fixtures/pull-request.json
+
+
+// A specific line
+link = lineLink({
+  owner: "glg-public",
+  repo: "screamer.tml",
+  sha: "c0db3ab6a7f43b416ee1810bdd49795540e19b07",
+  path: "test/fixtures/pull-request.json",
+  line: 5,
+});
+// https://github.com/glg-public/screamer.tml/blob/c0db3ab6a7f43b416ee1810bdd49795540e19b07/test/fixtures/pull-request.json#L5
+
+
+// A range of lines
+link = lineLink({
+  owner: "glg-public",
+  repo: "screamer.tml",
+  sha: "c0db3ab6a7f43b416ee1810bdd49795540e19b07",
+  path: "test/fixtures/pull-request.json",
+  line: { start: 5, end: 9 },
+});
+// https://github.com/glg-public/screamer.tml/blob/c0db3ab6a7f43b416ee1810bdd49795540e19b07/test/fixtures/pull-request.json#L5-L9
 ```
 
 ### prLink

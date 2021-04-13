@@ -206,6 +206,16 @@ function prLink({ owner, repo, pull_number }) {
   return `https://github.com/${owner}/${repo}/pull/${pull_number}`;
 }
 
+/**
+ * Returns a link to a specific line, or range of lines in a blob
+ * @param {Object} options
+ * @param {string} options.owner
+ * @param {string} options.repo
+ * @param {string} options.sha
+ * @param {string} options.path
+ * @param {number|object} options.line
+ * @returns {string}
+ */
 function lineLink({ owner, repo, sha, path: filePath, line }) {
   let link = `https://github.com/${owner}/${repo}/blob/${sha}/${filePath}`;
 
