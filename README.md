@@ -162,8 +162,27 @@ Returns
 
 ### getLinesForJSON
 
+Identifies the start and end line for a JSON object in a file
+
 ```javascript
 const { getLinesForJSON } = require('./util');
+
+let fileLines = [
+"[",
+"  {",
+'    "name":"WRONG",',
+'    "valueFrom": "differentarn"',
+"  },",
+"  {",
+'    "name":"MY_SECRET",',
+'    "valueFrom": "arn"',
+"  }",
+"]",
+];
+
+let jsonObj = { name: "MY_SECRET", valueFrom: "arn" };
+let lines = getLinesForJSON(fileLines, jsonObj);
+// { start: 6, end: 9 }
 ```
 
 ### getLineNumber

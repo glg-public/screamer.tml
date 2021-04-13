@@ -20,7 +20,8 @@ function suggest(title, suggestion) {
 }
 
 /**
- *
+ * Identifies the start and end line for a json object
+ * in a file
  * @param {Array<string>} fileLines
  * @param {Object} jsonObj
  *
