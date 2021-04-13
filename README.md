@@ -292,7 +292,7 @@ Performs an HTTPS GET operation and returns a JSON-parsed body
 const { httpGet } = require('./util');
 
 // No Auth
-let url = 'https://static.glgresearch.com/gds-cluster-map/cluster-map.json';
+let url = 'https://google.com';
 const clusterMap = await httpGet(url);
 
 // With Auth
@@ -307,8 +307,22 @@ const roles = await httpGet(url, httpOpts);
 
 ### leaveComment
 
+Leaves the correct type of comment for a given Result object.
+
+- If `Result.line === 0`, it will leave a general comment, and not a line-specific comment.
+- If `Result.line` is an object like `{start, end}`, it will leave the comment on the selected range of lines, in the file specified by `Result.path`.
+- If `Result.line` is a positive integer, it will leave a comment at that line, in the file specified by `Result.path`.
+- `Result.problems` is an array of strings, and will be converted to a markdown list in the comment
+
 ```javascript
 const { leaveComment } = require('./util');
+
+await leaveComment(octokit, result, {
+  owner: 'glg-public',
+  repo: 'screamer.tml',
+  pull_number: 1,
+  sha: 'e91f020470b41e2e5a42e0cfb9b4add9ab33145d'
+});
 ```
 
 ### lineLink

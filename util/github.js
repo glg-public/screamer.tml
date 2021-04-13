@@ -26,9 +26,8 @@ async function getAllRelevantFiles(files, filesToCheck) {
 }
 
 /**
- * Leaves the correct type of comment for a given result and deployment
+ * Leaves the correct type of comment for a given result
  * @param {Octokit} octokit A configured octokit client
- * @param {Deployment} deployment
  * @param {Result} result
  * @param {{
  * owner: string,
