@@ -205,8 +205,25 @@ const line = getLineNumber(ordersContents, regex);
 
 ### getLineWithinObject
 
+Looks for a line that matches a given RegExp, and is also within a specified object.
+
 ```javascript
 const { getLineWithinObject } = require('./util');
+
+const secretsJson = [
+  {
+    name: "JWT_SECRET",
+    valueFrom: "some secret arn",
+  },
+];
+const secretsJsonContents = JSON.stringify(secretsJson, null, 2).split("\n");
+const regex = new RegExp(`"name":\\s*"${secretsJson[0].name}"`);
+const lineNumber = getLineWithinObject(
+  secretsJsonContents,
+  secretsJson[0],
+  regex
+);
+// 3
 ```
 
 ### getNewIssueLink
