@@ -8,6 +8,7 @@ const {
   codeBlock,
   getLineWithinObject,
   escapeRegExp,
+  getLineNumber,
 } = require("../../util/text");
 
 describe("getLinesForJSON", () => {
@@ -229,5 +230,29 @@ describe("escapeRegExp", () => {
 
     const block = `sometexthere${string}somemoretextouthere`;
     expect(new RegExp(escaped).test(block)).to.be.true;
+  });
+});
+
+describe("getLineNumber", () => {
+  it("returns the line number if a line matches", () => {
+    const ordersContents = [
+      "export SOMETHING=allowed",
+      'export SOMETHING_ELSE="also allowed"',
+    ];
+
+    const regex = /export SOMETHING_ELSE=/;
+    const line = getLineNumber(ordersContents, regex);
+    expect(line).to.equal(2);
+  });
+
+  it("returns null if no lines match", () => {
+    const ordersContents = [
+      "export SOMETHING=allowed",
+      'export SOMETHING_ELSE="also allowed"',
+    ];
+
+    const regex = /dockerdeploy/;
+    const line = getLineNumber(ordersContents, regex);
+    expect(line).to.be.null;
   });
 });

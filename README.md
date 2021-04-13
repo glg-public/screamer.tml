@@ -187,8 +187,20 @@ let lines = getLinesForJSON(fileLines, jsonObj);
 
 ### getLineNumber
 
+Returns the first line number that matches a given RegExp.
+Returns null if no lines match
+
 ```javascript
 const { getLineNumber } = require('./util');
+
+const ordersContents = [
+  "export SOMETHING=allowed",
+  'export SOMETHING_ELSE="also allowed"',
+];
+
+const regex = /export SOMETHING_ELSE=/;
+const line = getLineNumber(ordersContents, regex);
+// 2
 ```
 
 ### getLineWithinObject

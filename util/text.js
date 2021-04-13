@@ -84,7 +84,8 @@ function getLinesForJSON(fileLines, jsonObj) {
 }
 
 /**
- *
+ * Returns the first line number that matches a given RegExp.
+ * Returns null if no lines match
  * @param {Array<string>} fileLines
  * @param {RegExp} regex
  *
