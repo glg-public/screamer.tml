@@ -150,6 +150,16 @@ async function leaveComment(
   }
 }
 
+/**
+ * Generates a markdown link that creates a new issue on a specified github repository
+ * @param {Object} options
+ * @param {string} options.linkText The visible text in the link
+ * @param {string} options.owner The owner of the repo to create an issue on
+ * @param {string} options.repo The repository to create an issue on
+ * @param {string} options.title The title of the new issue
+ * @param {string} options.body The body of the new issue
+ * @returns
+ */
 function getNewIssueLink({ linkText, owner, repo, title, body }) {
   return `[${linkText}](https://github.com/${owner}/${repo}/issues/new?title=${encodeURIComponent(
     title

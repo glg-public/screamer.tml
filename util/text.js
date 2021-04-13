@@ -101,7 +101,8 @@ function getLineNumber(fileLines, regex) {
 }
 
 /**
- *
+ * Looks for a line that matches a given RegExp, and is also
+ * within a specified object.
  * @param {Array<string>} fileLines
  * @param {Object} jsonObj
  * @param {RegExp} regex

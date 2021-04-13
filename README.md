@@ -228,8 +228,20 @@ const lineNumber = getLineWithinObject(
 
 ### getNewIssueLink
 
+Generates a markdown link that creates a new issue on a specified github repository
+
 ```javascript
 const { getNewIssueLink } = require('./util');
+
+const issueLink = getNewIssueLink({
+  linkText: "Create an issue",
+  owner: "glg-public",
+  repo: "screamer.tml",
+  title: "Test Error",
+  body: "This text will be in the body of the issue",
+});
+
+// [Create an issue](https://github.com/glg-public/screamer.tml/issues/new?title=Test%20Error&body=This%20text%20will%20be%20in%20the%20body%20of%20the%20issue)
 ```
 
 ### getNewFileLink

@@ -42,13 +42,29 @@ describe("suggestBugReport", () => {
   });
 });
 
+describe("getNewIssueLink", () => {
+  it("generates a markdown link for a new github issue", () => {
+    const issueLink = getNewIssueLink({
+      linkText: "Create an issue",
+      owner: "glg-public",
+      repo: "screamer.tml",
+      title: "Test Error",
+      body: "This text will be in the body of the issue",
+    });
+
+    expect(issueLink).to.equal(
+      "[Create an issue](https://github.com/glg-public/screamer.tml/issues/new?title=Test%20Error&body=This%20text%20will%20be%20in%20the%20body%20of%20the%20issue)"
+    );
+  });
+});
+
 describe("getOwnerRepoBranch", () => {
   const pr = require("../fixtures/pull-request.json");
   it("extracts the owner, repo, and branch from the pull request context", () => {
-    const context = { payload: { pull_request: pr }};
+    const context = { payload: { pull_request: pr } };
     let { owner, repo, branch } = getOwnerRepoBranch(context);
     expect(owner).to.equal("octocat");
     expect(repo).to.equal("Hello-World");
     expect(branch).to.equal("new-topic");
-  })
-})
+  });
+});
